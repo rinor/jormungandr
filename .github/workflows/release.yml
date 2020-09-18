@@ -14,7 +14,7 @@ jobs:
   create_release:
     name: Create release
     if: >
-      github.repository_owner == 'input-output-hk'
+      github.repository_owner == 'rinor'
       || startsWith(github.ref, 'refs/heads/ci/test/')
       || startsWith(github.ref, 'refs/tags/') && contains(github.ref, '-ci-test.')
     runs-on: ubuntu-latest
@@ -62,7 +62,7 @@ jobs:
   cache_info:
     name: Bootstrap cache
     if: >
-      github.repository_owner == 'input-output-hk'
+      github.repository_owner == 'rinor'
       || startsWith(github.ref, 'refs/heads/ci/test/')
       || startsWith(github.ref, 'refs/tags/') && contains(github.ref, '-ci-test.')
     runs-on: ubuntu-latest
