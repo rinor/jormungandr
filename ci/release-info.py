@@ -63,7 +63,7 @@ elif release_type == 'nightly':
     tag = 'nightly.' + date
     release_flags = '--prerelease'
 elif release_type == 'catalyst':
-    version = 0
+    version = ''
     tag = 'catalyst'
     release_flags = '--prerelease'
 
