@@ -33,7 +33,10 @@ date = date.today().strftime('%Y%m%d')
 ref = None
 if event_name == 'push':
     ref = os.getenv('GITHUB_REF')
-    if ref.startswith('refs/tags/'):
+    if ref.startswith('refs/tags/catalyst'):
+        release_type = 'catalyst'
+        ref = None
+    elif ref.startswith('refs/tags/'):
         release_type = 'tagged'
     elif ref == 'refs/heads/ci/test/nightly':
         # emulate the nightly workflow
@@ -58,6 +61,10 @@ elif release_type == 'nightly':
         version,
     )
     tag = 'nightly.' + date
+    release_flags = '--prerelease'
+elif release_type == 'catalyst':
+    version = 0
+    tag = 'catalyst'
     release_flags = '--prerelease'
 
 for name in 'version', 'date', 'tag', 'release_type', 'release_flags':
